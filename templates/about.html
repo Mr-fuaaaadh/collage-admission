@@ -1,0 +1,479 @@
+<!doctype html>
+{% load static %}
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Edura - Online Courses & Education HTML Template - About Us</title>
+    <meta name="author" content="themeholy">
+    <meta name="description" content="Edura - Online Courses & Education HTML Template">
+    <meta name="keywords" content="Edura - Online Courses & Education HTML Template">
+    <meta name="robots" content="INDEX,FOLLOW">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'assets/img/favicons/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/img/favicons/apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/img/favicons/apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/favicons/apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/img/favicons/apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/img/favicons/apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/img/favicons/apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/img/favicons/apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/img/favicons/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192"
+        href="{% static 'assets/img/favicons/android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/img/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/img/favicons/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/img/favicons/favicon-16x16.png' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'assets/img/favicons/ms-icon-144x144.png' %}">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/app.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- header section start  -->
+    {% include 'partials/header.html' %}
+    <!-- header section end  -->
+
+    <div class="breadcumb-wrapper" data-bg-src="{% static 'assets/img/bg/breadcumb-bg.jpg' %}" data-overlay="title"
+        data-opacity="8">
+        <div class="breadcumb-shape" data-bg-src="{% static 'assets/img/bg/breadcumb_shape_1_1.png' %}"></div>
+        <div class="shape-mockup breadcumb-shape2 jump d-lg-block d-none" data-right="30px" data-bottom="30px"><img
+                src="{% static 'assets/img/bg/breadcumb_shape_1_2.png' %}" alt="shape"></div>
+        <div class="shape-mockup breadcumb-shape3 jump-reverse d-lg-block d-none" data-left="50px" data-bottom="80px">
+            <img src="{% static 'assets/img/bg/breadcumb_shape_1_3.png' %}" alt="shape">
+        </div>
+        <div class="container">
+            <div class="breadcumb-content text-center">
+                <h1 class="breadcumb-title">About Us</h1>
+                <ul class="breadcumb-menu">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li>About Us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section class="overflow-hidden space">
+        <div class="container">
+            <div class="title-area text-center">
+                <span class="sub-title">
+                    <i class="fas fa-book me-2"></i> What We Do
+                </span>
+                <h2 class="sec-title">Empowering Students with Expert Guidance</h2>
+            </div>
+            <div class="row gy-4 justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card style3">
+                        <div class="service-card-content">
+                            <div class="service-card-icon">
+                                <img src="{% static 'assets/img/icon/service-icon-3-1.svg' %}" alt="Icon">
+                            </div>
+                            <h3 class="box-title">Career Counseling</h3>
+                            <p class="service-card-text">
+                                Our expert mentors help you choose the right path based on your interests, strengths,
+                                and future goals.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card style3">
+                        <div class="service-card-content">
+                            <div class="service-card-icon">
+                                <img src="{% static 'assets/img/icon/service-icon-3-2.svg' %}" alt="Icon">
+                            </div>
+                            <h3 class="box-title">Top College Admissions</h3>
+                            <p class="service-card-text">
+                                We assist students in securing admission to top colleges across India and abroad with
+                                the right strategy and documentation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="service-card style3">
+                        <div class="service-card-content">
+                            <div class="service-card-icon">
+                                <img src="{% static 'assets/img/icon/service-icon-3-3.svg' %}" alt="Icon">
+                            </div>
+                            <h3 class="box-title">24/7 Support & Guidance</h3>
+                            <p class="service-card-text">
+                                Whether it's application queries or last-minute clarifications, our team is always
+                                available to guide you through every step.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="overflow-hidden overflow-hidden bg-smoke space" id="about-sec"
+        data-bg-src="{% static 'assets/img/bg/about-5-bg.png' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 mb-50 mb-xl-0">
+                    <div class="img-box4">
+                        <div class="img1">
+                            <img class="tilt-active" src="{% static 'assets/img/normal/about_5_1.png' %}" alt="About">
+                        </div>
+                        <div class="about-grid">
+                            <h3 class="about-grid_year"><span class="counter-number">10</span>k+</h3>
+                            <p class="about-grid_text">Students Successfully Guided</p>
+                        </div>
+                        <div class="img2">
+                            <img class="tilt-active" src="{% static 'assets/img/normal/about_5_2.png' %}" alt="About">
+                        </div>
+                        <div class="shape1 shape-mockup jump" data-bottom="0" data-left="-46px">
+                            <img src="{% static 'assets/img/normal/about_5_1shape.png' %}" alt="About">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="title-area mb-35">
+                        <span class="sub-title"><i class="fas fa-book me-2"></i> About Us</span>
+                        <h2 class="sec-title">Welcome to EduGuild </h2>
+                    </div>
+                    <p class="mt-n2 mb-25">
+                        At EduGuild, we specialize in guiding students towards their dream careers by helping them
+                        choose the right course and college. Our personalized consultancy services ensure every student
+                        finds the best academic path suited to their goals and aspirations.
+                    </p>
+                    <div class="row mb-35 gy-4">
+                        <div class="col-lg-6">
+                            <div class="about-grid3">
+                                <div class="about-grid-icon">
+                                    <img src="{% static 'assets/img/icon/about-grid-icon2-1.svg' %}" alt="icon">
+                                </div>
+                                <div class="details">
+                                    <h5>Career Guidance</h5>
+                                    <p>Personalized counselling & support</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="about-grid3">
+                                <div class="icon">
+                                    <img src="{% static 'assets/img/icon/about-grid-icon2-2.svg' %}" alt="icon">
+                                </div>
+                                <div class="details">
+                                    <h5>Top College Admissions</h5>
+                                    <p>Across India and abroad</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col-md-auto">
+                            <div class="about-grid_img mb-30 mb-md-0">
+                                <img src="{% static 'assets/img/normal/about_1_4.png' %}" alt="img">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="checklist">
+                                <ul>
+                                    <li>Expert assistance for course & college selection</li>
+                                    <li>Support for applications & documentation</li>
+                                    <li>Trusted by thousands of students and parents</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{% url 'about' %}" class="th-btn mt-40">ABOUT MORE
+                        <i class="fas fa-regular fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="counter-area-2" data-bg-src="{% static 'assets/img/bg/counter-bg_1.png' %}">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-sm-6 col-xl-3 counter-card-wrap">
+                    <div class="counter-card">
+                        <h2 class="counter-card_number">
+                            <span class="counter-number">10</span>k<span class="fw-normal">+</span>
+                        </h2>
+                        <p class="counter-card_text"><strong>Students</strong> Guided</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3 counter-card-wrap">
+                    <div class="counter-card">
+                        <h2 class="counter-card_number">
+                            <span class="counter-number">500</span><span class="fw-normal">+</span>
+                        </h2>
+                        <p class="counter-card_text"><strong>Colleges</strong> Partnered</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3 counter-card-wrap">
+                    <div class="counter-card">
+                        <h2 class="counter-card_number">
+                            <span class="counter-number">98</span><span class="fw-normal">%</span>
+                        </h2>
+                        <p class="counter-card_text"><strong>Admission</strong> Success Rate</p>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-xl-3 counter-card-wrap">
+                    <div class="counter-card">
+                        <h2 class="counter-card_number">
+                            <span class="counter-number">24</span><span class="fw-normal">/7</span>
+                        </h2>
+                        <p class="counter-card_text"><strong>Student</strong> Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <section class="space overflow-hidden">
+        <div class="shape-mockup team2-bg-shape1 jump-reverse d-lg-block d-none" data-left="-2%" data-top="0"><img
+                src="{% static 'assets/img/team/team-shape_1_1.png' %}" alt="img"></div>
+        <div class="shape-mockup team2-bg-shape5 jump d-xxl-block d-none" data-right="-7%" data-top="40%"><img
+                src="{% static 'assets/img/team/team-shape_1_5.png' %}" alt="img"></div>
+        <div class="container">
+            <div class="title-area text-center"><span class="sub-title"><i class="fas fa-book me-2"></i> Our
+                    Instructor</span>
+                <h2 class="sec-title">Meet Our Expert Instructor</h2>
+            </div>
+            <div class="row th-carousel slider-shadow" data-slide-show="4" data-lg-slide-show="3" data-md-slide-show="2"
+                data-sm-slide-show="2" data-xs-slide-show="1">
+                <div class="col-lg-6">
+                    <div class="team-card style2">
+                        <div class="team-img-wrap"><svg class="team-shape" xmlns="http://www.w3.org/2000/svg"
+                                width="327" height="337" viewBox="0 0 327 337" fill="none">
+                                <path
+                                    d="M158.167 331C158.167 333.946 160.555 336.333 163.5 336.333C166.446 336.333 168.833 333.946 168.833 331C168.833 328.054 166.446 325.667 163.5 325.667C160.555 325.667 158.167 328.054 158.167 331ZM158.167 6C158.167 8.94552 160.555 11.3333 163.5 11.3333C166.446 11.3333 168.833 8.94552 168.833 6C168.833 3.05448 166.446 0.666667 163.5 0.666667C160.555 0.666667 158.167 3.05448 158.167 6ZM325 167.5C325 257.254 253.238 330 163.5 330V332C254.359 332 327 258.343 327 167.5H325ZM2.00012 167.5C2.00012 77.7618 73.7458 7 163.5 7V5C72.6574 5 0.00012207 76.6411 0.00012207 167.5H2.00012Z"
+                                    fill="#0D5EF4" />
+                            </svg>
+                            <div class="team-img"><img src="{% static 'assets/img/team/team_2_1.jpg' %}" alt="Team">
+                            </div>
+                            <div class="team-social"><a href="#" class="icon-btn"><i class="far fa-plus"></i></a>
+                                <div class="th-social"><a target="_blank" href="https://twitter.com/"><i
+                                            class="fab fa-twitter"></i></a> <a target="_blank"
+                                        href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a> <a
+                                        target="_blank" href="https://instagram.com/"><i
+                                            class="fab fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-title"><a href="">Hirmar Ubunti</a></h3><span
+                                class="team-desig">Instructor</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="team-card style2">
+                        <div class="team-img-wrap"><svg class="team-shape" xmlns="http://www.w3.org/2000/svg"
+                                width="327" height="337" viewBox="0 0 327 337" fill="none">
+                                <path
+                                    d="M158.167 331C158.167 333.946 160.555 336.333 163.5 336.333C166.446 336.333 168.833 333.946 168.833 331C168.833 328.054 166.446 325.667 163.5 325.667C160.555 325.667 158.167 328.054 158.167 331ZM158.167 6C158.167 8.94552 160.555 11.3333 163.5 11.3333C166.446 11.3333 168.833 8.94552 168.833 6C168.833 3.05448 166.446 0.666667 163.5 0.666667C160.555 0.666667 158.167 3.05448 158.167 6ZM325 167.5C325 257.254 253.238 330 163.5 330V332C254.359 332 327 258.343 327 167.5H325ZM2.00012 167.5C2.00012 77.7618 73.7458 7 163.5 7V5C72.6574 5 0.00012207 76.6411 0.00012207 167.5H2.00012Z"
+                                    fill="#0D5EF4" />
+                            </svg>
+                            <div class="team-img"><img src="{% static 'assets/img/team/team_2_2.jpg' %}" alt="Team">
+                            </div>
+                            <div class="team-social"><a href="#" class="icon-btn"><i class="far fa-plus"></i></a>
+                                <div class="th-social"><a target="_blank" href="https://twitter.com/"><i
+                                            class="fab fa-twitter"></i></a> <a target="_blank"
+                                        href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a> <a
+                                        target="_blank" href="https://instagram.com/"><i
+                                            class="fab fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-title"><a href="">Lily Michelle</a></h3><span
+                                class="team-desig">Founder & CEO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="team-card style2">
+                        <div class="team-img-wrap"><svg class="team-shape" xmlns="http://www.w3.org/2000/svg"
+                                width="327" height="337" viewBox="0 0 327 337" fill="none">
+                                <path
+                                    d="M158.167 331C158.167 333.946 160.555 336.333 163.5 336.333C166.446 336.333 168.833 333.946 168.833 331C168.833 328.054 166.446 325.667 163.5 325.667C160.555 325.667 158.167 328.054 158.167 331ZM158.167 6C158.167 8.94552 160.555 11.3333 163.5 11.3333C166.446 11.3333 168.833 8.94552 168.833 6C168.833 3.05448 166.446 0.666667 163.5 0.666667C160.555 0.666667 158.167 3.05448 158.167 6ZM325 167.5C325 257.254 253.238 330 163.5 330V332C254.359 332 327 258.343 327 167.5H325ZM2.00012 167.5C2.00012 77.7618 73.7458 7 163.5 7V5C72.6574 5 0.00012207 76.6411 0.00012207 167.5H2.00012Z"
+                                    fill="#0D5EF4" />
+                            </svg>
+                            <div class="team-img"><img src="{% static 'assets/img/team/team_2_3.jpg' %}" alt="Team">
+                            </div>
+                            <div class="team-social"><a href="#" class="icon-btn"><i class="far fa-plus"></i></a>
+                                <div class="th-social"><a target="_blank" href="https://twitter.com/"><i
+                                            class="fab fa-twitter"></i></a> <a target="_blank"
+                                        href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a> <a
+                                        target="_blank" href="https://instagram.com/"><i
+                                            class="fab fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-title"><a href="">Daniel Thomas</a></h3><span
+                                class="team-desig">Junior Instructor</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="team-card style2">
+                        <div class="team-img-wrap"><svg class="team-shape" xmlns="http://www.w3.org/2000/svg"
+                                width="327" height="337" viewBox="0 0 327 337" fill="none">
+                                <path
+                                    d="M158.167 331C158.167 333.946 160.555 336.333 163.5 336.333C166.446 336.333 168.833 333.946 168.833 331C168.833 328.054 166.446 325.667 163.5 325.667C160.555 325.667 158.167 328.054 158.167 331ZM158.167 6C158.167 8.94552 160.555 11.3333 163.5 11.3333C166.446 11.3333 168.833 8.94552 168.833 6C168.833 3.05448 166.446 0.666667 163.5 0.666667C160.555 0.666667 158.167 3.05448 158.167 6ZM325 167.5C325 257.254 253.238 330 163.5 330V332C254.359 332 327 258.343 327 167.5H325ZM2.00012 167.5C2.00012 77.7618 73.7458 7 163.5 7V5C72.6574 5 0.00012207 76.6411 0.00012207 167.5H2.00012Z"
+                                    fill="#0D5EF4" />
+                            </svg>
+                            <div class="team-img"><img src="{% static 'assets/img/team/team_2_4.jpg' %}" alt="Team">
+                            </div>
+                            <div class="team-social"><a href="#" class="icon-btn"><i class="far fa-plus"></i></a>
+                                <div class="th-social"><a target="_blank" href="https://twitter.com/"><i
+                                            class="fab fa-twitter"></i></a> <a target="_blank"
+                                        href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a> <a
+                                        target="_blank" href="https://instagram.com/"><i
+                                            class="fab fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-title"><a href="">Jennifer Patricia</a></h3><span
+                                class="team-desig">Senior Instructor</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="team-card style2">
+                        <div class="team-img-wrap"><svg class="team-shape" xmlns="http://www.w3.org/2000/svg"
+                                width="327" height="337" viewBox="0 0 327 337" fill="none">
+                                <path
+                                    d="M158.167 331C158.167 333.946 160.555 336.333 163.5 336.333C166.446 336.333 168.833 333.946 168.833 331C168.833 328.054 166.446 325.667 163.5 325.667C160.555 325.667 158.167 328.054 158.167 331ZM158.167 6C158.167 8.94552 160.555 11.3333 163.5 11.3333C166.446 11.3333 168.833 8.94552 168.833 6C168.833 3.05448 166.446 0.666667 163.5 0.666667C160.555 0.666667 158.167 3.05448 158.167 6ZM325 167.5C325 257.254 253.238 330 163.5 330V332C254.359 332 327 258.343 327 167.5H325ZM2.00012 167.5C2.00012 77.7618 73.7458 7 163.5 7V5C72.6574 5 0.00012207 76.6411 0.00012207 167.5H2.00012Z"
+                                    fill="#0D5EF4" />
+                            </svg>
+                            <div class="team-img"><img src="{% static 'assets/img/team/team_2_1.jpg' %}" alt="Team">
+                            </div>
+                            <div class="team-social"><a href="#" class="icon-btn"><i class="far fa-plus"></i></a>
+                                <div class="th-social"><a target="_blank" href="https://twitter.com/"><i
+                                            class="fab fa-twitter"></i></a> <a target="_blank"
+                                        href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a> <a
+                                        target="_blank" href="https://instagram.com/"><i
+                                            class="fab fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-title"><a href="">Hirmar Ubunti</a></h3><span
+                                class="team-desig">Instructor</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="team-card style2">
+                        <div class="team-img-wrap"><svg class="team-shape" xmlns="http://www.w3.org/2000/svg"
+                                width="327" height="337" viewBox="0 0 327 337" fill="none">
+                                <path
+                                    d="M158.167 331C158.167 333.946 160.555 336.333 163.5 336.333C166.446 336.333 168.833 333.946 168.833 331C168.833 328.054 166.446 325.667 163.5 325.667C160.555 325.667 158.167 328.054 158.167 331ZM158.167 6C158.167 8.94552 160.555 11.3333 163.5 11.3333C166.446 11.3333 168.833 8.94552 168.833 6C168.833 3.05448 166.446 0.666667 163.5 0.666667C160.555 0.666667 158.167 3.05448 158.167 6ZM325 167.5C325 257.254 253.238 330 163.5 330V332C254.359 332 327 258.343 327 167.5H325ZM2.00012 167.5C2.00012 77.7618 73.7458 7 163.5 7V5C72.6574 5 0.00012207 76.6411 0.00012207 167.5H2.00012Z"
+                                    fill="#0D5EF4" />
+                            </svg>
+                            <div class="team-img"><img src="{% static 'assets/img/team/team_2_2.jpg' %}" alt="Team">
+                            </div>
+                            <div class="team-social"><a href="#" class="icon-btn"><i class="far fa-plus"></i></a>
+                                <div class="th-social"><a target="_blank" href="https://twitter.com/"><i
+                                            class="fab fa-twitter"></i></a> <a target="_blank"
+                                        href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a> <a
+                                        target="_blank" href="https://instagram.com/"><i
+                                            class="fab fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-title"><a href="">Lily Michelle</a></h3><span
+                                class="team-desig">Founder & CEO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="team-card style2">
+                        <div class="team-img-wrap"><svg class="team-shape" xmlns="http://www.w3.org/2000/svg"
+                                width="327" height="337" viewBox="0 0 327 337" fill="none">
+                                <path
+                                    d="M158.167 331C158.167 333.946 160.555 336.333 163.5 336.333C166.446 336.333 168.833 333.946 168.833 331C168.833 328.054 166.446 325.667 163.5 325.667C160.555 325.667 158.167 328.054 158.167 331ZM158.167 6C158.167 8.94552 160.555 11.3333 163.5 11.3333C166.446 11.3333 168.833 8.94552 168.833 6C168.833 3.05448 166.446 0.666667 163.5 0.666667C160.555 0.666667 158.167 3.05448 158.167 6ZM325 167.5C325 257.254 253.238 330 163.5 330V332C254.359 332 327 258.343 327 167.5H325ZM2.00012 167.5C2.00012 77.7618 73.7458 7 163.5 7V5C72.6574 5 0.00012207 76.6411 0.00012207 167.5H2.00012Z"
+                                    fill="#0D5EF4" />
+                            </svg>
+                            <div class="team-img"><img src="{% static 'assets/img/team/team_2_3.jpg' %}" alt="Team">
+                            </div>
+                            <div class="team-social"><a href="#" class="icon-btn"><i class="far fa-plus"></i></a>
+                                <div class="th-social"><a target="_blank" href="https://twitter.com/"><i
+                                            class="fab fa-twitter"></i></a> <a target="_blank"
+                                        href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a> <a
+                                        target="_blank" href="https://instagram.com/"><i
+                                            class="fab fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-title"><a href="">Daniel Thomas</a></h3><span
+                                class="team-desig">Junior Instructor</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="team-card style2">
+                        <div class="team-img-wrap"><svg class="team-shape" xmlns="http://www.w3.org/2000/svg"
+                                width="327" height="337" viewBox="0 0 327 337" fill="none">
+                                <path
+                                    d="M158.167 331C158.167 333.946 160.555 336.333 163.5 336.333C166.446 336.333 168.833 333.946 168.833 331C168.833 328.054 166.446 325.667 163.5 325.667C160.555 325.667 158.167 328.054 158.167 331ZM158.167 6C158.167 8.94552 160.555 11.3333 163.5 11.3333C166.446 11.3333 168.833 8.94552 168.833 6C168.833 3.05448 166.446 0.666667 163.5 0.666667C160.555 0.666667 158.167 3.05448 158.167 6ZM325 167.5C325 257.254 253.238 330 163.5 330V332C254.359 332 327 258.343 327 167.5H325ZM2.00012 167.5C2.00012 77.7618 73.7458 7 163.5 7V5C72.6574 5 0.00012207 76.6411 0.00012207 167.5H2.00012Z"
+                                    fill="#0D5EF4" />
+                            </svg>
+                            <div class="team-img"><img src="{% static 'assets/img/team/team_2_4.jpg' %}" alt="Team">
+                            </div>
+                            <div class="team-social"><a href="#" class="icon-btn"><i class="far fa-plus"></i></a>
+                                <div class="th-social"><a target="_blank" href="https://twitter.com/"><i
+                                            class="fab fa-twitter"></i></a> <a target="_blank"
+                                        href="https://facebook.com/"><i class="fab fa-facebook-f"></i></a> <a
+                                        target="_blank" href="https://instagram.com/"><i
+                                            class="fab fa-instagram"></i></a></div>
+                            </div>
+                        </div>
+                        <div class="team-content">
+                            <h3 class="team-title"><a href="">Jennifer Patricia</a></h3><span
+                                class="team-desig">Senior Instructor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ads section start -->
+    {% include 'partials/ads.html' %}
+    <!-- ads section end -->
+
+
+
+    <!-- ads section start -->
+    {% include 'partials/comments.html' %}
+    <!-- ads section end -->
+
+
+    <!-- start blog section -->
+    {% include 'partials/blog.html' %}
+    <!-- end blog section -->
+
+    <!-- start blog section -->
+    {% include 'partials/get-course.html' %}
+    <!-- end blog section -->
+
+
+
+    <!-- footer section start  -->
+    {% include 'partials/footer.html' %}
+    <!-- footer section end  -->
+
+    <script src="{% static 'assets/js/vendor/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/app.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>

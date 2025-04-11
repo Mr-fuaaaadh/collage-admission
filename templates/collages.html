@@ -1,0 +1,200 @@
+<!doctype html>
+{% load static %}
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Edura - Online Courses & Education HTML Template - Courses Page</title>
+    <meta name="author" content="themeholy">
+    <meta name="description" content="Edura - Online Courses & Education HTML Template">
+    <meta name="keywords" content="Edura - Online Courses & Education HTML Template">
+    <meta name="robots" content="INDEX,FOLLOW">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'assets/img/favicons/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/img/favicons/apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/img/favicons/apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/favicons/apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/img/favicons/apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/img/favicons/apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/img/favicons/apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/img/favicons/apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/img/favicons/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192"
+        href="{% static 'assets/img/favicons/android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/img/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/img/favicons/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/img/favicons/favicon-16x16.png' %}">
+    <!-- <link rel="manifest" href="{% static 'assets/img/favicons/manifest.json"> -->
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'assets/img/favicons/ms-icon-144x144.png' %}">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/app.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+
+<body>
+
+    <!-- header start -->
+    {% include 'partials/header.html' %}
+    <!-- header end -->
+
+    <div class="breadcumb-wrapper" data-bg-src="{% static 'assets/img/bg/breadcumb-bg.jpg' %}" data-overlay="title"
+        data-opacity="8">
+        <div class="breadcumb-shape" data-bg-src="{% static 'assets/img/bg/breadcumb_shape_1_1.png' %}"></div>
+        <div class="shape-mockup breadcumb-shape2 jump d-lg-block d-none" data-right="30px" data-bottom="30px"><img
+                src="{% static 'assets/img/bg/breadcumb_shape_1_2.png' %}" alt="shape"></div>
+        <div class="shape-mockup breadcumb-shape3 jump-reverse d-lg-block d-none" data-left="50px" data-bottom="80px">
+            <img src="{% static 'assets/img/bg/breadcumb_shape_1_3.png' %}" alt="shape">
+        </div>
+        <div class="container">
+            <div class="breadcumb-content text-center">
+                <h1 class="breadcumb-title">Collages</h1>
+                <ul class="breadcumb-menu">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li>Collages</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section class="space-top space-extra2-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 order-lg-2">
+                    <div class="th-sort-bar course-sort-bar">
+                        <div class="row justify-content-between align-items-center">
+                            <div class="col-md">
+                                <p class="woocommerce-result-count">
+                                    Showing <span class="text-theme">{{ total_count }} collages</span> of {{ collages.paginator.count }} result{{ collages.paginator.count|pluralize }}
+                                </p>
+                            </div>
+                            <div class="col-md-auto">
+                                <div class="nav" role="tablist"><a class="active" href="#" id="tab-shop-list"
+                                        data-bs-toggle="tab" data-bs-target="#tab-list" role="tab"
+                                        aria-controls="tab-grid" aria-selected="false"><i
+                                            class="fa-solid fa-grid-2 me-2"></i>Grid</a> <a href="#" id="tab-shop-grid"
+                                        data-bs-toggle="tab" data-bs-target="#tab-grid" role="tab"
+                                        aria-controls="tab-grid" aria-selected="true"><i
+                                            class="fa-solid fa-list me-2"></i>List</a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade active show" id="tab-list" role="tabpanel"
+                            aria-labelledby="tab-shop-list">
+                            <div class="row gy-30">
+                                {% for collage in collages %}
+                                <div class="col-md-6 col-xl-3">
+                                    <div class="course-box style2">
+                                        <div class="course-img">
+                                            {% if collage.image %}
+                                            <img src="{{ collage.image.url }}" alt="{{ collage.name }}">
+                                            {% else %}
+                                            <img src="{% static 'assets/img/course/default.jpg' %}"
+                                                alt="No Image Available">
+                                            {% endif %}
+                                            <span class="tag">
+                                                <i class="fas fa-certificate"></i> {{ collage.accreditation }}
+                                            </span>
+                                        </div>
+                                        <div class="course-content">
+                                            <div class="course-rating">
+
+                                                <div class="star-rating" role="img" aria-label="Rated 4.7 out of 5">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </div>
+                                                <span class="rating-number">(4.7)</span>
+                                                <span>(4.7)</span>
+                                            </div>
+
+                                            <h3 class="course-title">
+                                                <a href=" {% url 'college_details' collage.slug %} ">{{ collage.name }}</a>
+                                            </h3>
+                                            <div class="course-meta">
+                                                <span>
+                                                    <i class="fas fa-chair"></i> Total Seats: {{ collage.total_seats }}
+                                                </span>
+                                                <span>
+                                                    <i class="fas fa-user-check"></i> Available:
+                                                    {{collage.available_seats }}
+                                                </span>
+                                                <span>
+                                                    <i class="fas fa-users"></i> Students 600+
+                                                </span>
+                                            </div>
+                                            <div class="course-author">
+                                                <div class="author-info">
+                                                    <img src="{{ collage.image.url }}" alt="author">
+                                                    <a href="" class="author-name">Max Alexix</a>
+                                                </div>
+                                                <div class="offer-tag">
+                                                    <i class="fas fa-tag"></i> Free
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pagination -->
+                    <div class="th-pagination text-center pt-50">
+                        <ul class="pagination">
+                            {% if collages.has_previous %}
+                            <li><a href="?page={{ collages.previous_page_number }}"><i
+                                        class="far fa-arrow-left"></i></a></li>
+                            {% endif %}
+                            {% for num in collages.paginator.page_range %}
+                            <li class="{% if collages.number == num %}active{% endif %}">
+                                <a href="?page={{ num }}">{{ num }}</a>
+                            </li>
+                            {% endfor %}
+                            {% if collages.has_next %}
+                            <li><a href="?page={{ collages.next_page_number }}"><i class="far fa-arrow-right"></i></a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-12 col-lg-4 order-lg-1">
+                    <aside class="sidebar-area sidebar-shop">
+                        <div class="widget widget_search">
+                            <form class="search-form">
+                                <input type="text" name="q" value="{{ request.GET.q }}" placeholder="Search by name...">
+                                <button type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer section start -->
+    {% include 'partials/footer.html' %}
+    <!-- Footer section end -->
+    <div class="scroll-top"><svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
+            </path>
+        </svg></div>
+    <script src="{% static 'assets/js/vendor/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/app.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>

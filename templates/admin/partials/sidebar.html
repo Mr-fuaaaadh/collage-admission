@@ -1,0 +1,78 @@
+{% load static %}
+{% block sidebar %}
+<!-- Page sidebar start-->
+<aside class="page-sidebar">
+  <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
+  <div class="main-sidebar" id="main-sidebar">
+    <ul class="sidebar-menu" id="simple-bar">
+      <li class="pin-title sidebar-main-title">
+        <div>
+          <h5 class="sidebar-title f-w-700">Pinned</h5>
+        </div>
+      </li>
+      <li class="sidebar-main-title">
+        <div>
+          <h5 class="lan-1 f-w-700 sidebar-title">General</h5>
+        </div>
+      </li>
+      <li class="sidebar-list">
+        <i class="fas fa-thumbtack"></i>
+        <a class="sidebar-link" href="javascript:void(0)">
+          <i class="fas fa-home stroke-icon"></i>
+          <h6>Dashboards</h6>
+          <span class="badge">3</span>
+          <i class="fas fa-angle-right icli"></i>
+        </a>
+        <ul class="sidebar-submenu">
+          <li> <a href="{% url 'home' %}">Default</a></li>
+          <li> <a href="dashboard-02.html">Ecommerce</a></li>
+          <li> <a href="dashboard-03.html">Education</a></li>
+        </ul>
+      </li>
+      <li class="sidebar-list">
+        <i class="fas fa-thumbtack"></i>
+        <a class="sidebar-link" href="javascript:void(0)">
+          <i class="fas fa-university stroke-icon"></i>
+          <h6>University</h6>
+          <i class="fas fa-angle-right icli"></i>
+        </a>
+        <ul class="sidebar-submenu">
+          <li> <a href="{% url 'university' %}">Add University</a></li>
+          <li> <a href="{% url 'universitys' %}">Universities</a></li>
+        </ul>
+      </li>
+
+      <li class="sidebar-list">
+        <i class="fas fa-thumbtack"></i>
+        <a class="sidebar-link" href="javascript:void(0)">
+          <i class="fas fa-university stroke-icon"></i>
+          <h6>Collage</h6>
+          <i class="fas fa-angle-right icli"></i>
+        </a>
+        <ul class="sidebar-submenu">
+          <li> <a href="{% url 'college_add' %}">Add Collage</a></li>
+          <li><a href="{% url 'college_list' %}">Collages</a></li>
+        </ul>
+      </li>
+
+
+      <li class="sidebar-list">
+        <i class="fas fa-thumbtack"></i>
+        <a class="sidebar-link" href="javascript:void(0)">
+          <i class="fas fa-university stroke-icon"></i>
+          <h6>Blog</h6>
+          <i class="fas fa-angle-right icli"></i>
+        </a>
+        <ul class="sidebar-submenu">
+          <li> <a href="{% url 'blog_create' %}">Add Blog</a></li>
+          <li> <a href="{% url 'blog_list' %}">Blogs</a></li>
+        </ul>
+      </li>
+
+      <!--  -->
+    </ul>
+  </div>
+  <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
+</aside>
+<!-- Page sidebar end-->
+{% endblock %}

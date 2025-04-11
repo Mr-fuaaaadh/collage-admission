@@ -1,0 +1,181 @@
+<!doctype html>
+{% load static %}
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Edura - Online Courses & Education HTML Template - Blog Details</title>
+    <meta name="author" content="themeholy">
+    <meta name="description" content="Edura - Online Courses & Education HTML Template">
+    <meta name="keywords" content="Edura - Online Courses & Education HTML Template">
+    <meta name="robots" content="INDEX,FOLLOW">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'assets/img/favicons/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'assets/img/favicons/apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'assets/img/favicons/apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'assets/img/favicons/apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'assets/img/favicons/apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'assets/img/favicons/apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'assets/img/favicons/apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'assets/img/favicons/apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/img/favicons/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192"
+        href="{% static 'assets/img/favicons/android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/img/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'assets/img/favicons/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/img/favicons/favicon-16x16.png' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'assets/img/favicons/ms-icon-144x144.png' %}">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/app.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+</head>
+
+<body>
+    <!-- headers section start -->
+    {% include 'partials/header.html' %}
+    <!-- headers section end -->
+
+    <div class="breadcumb-wrapper" data-bg-src="{% static 'assets/img/bg/breadcumb-bg.jpg' %}" data-overlay="title"
+        data-opacity="8">
+        <div class="breadcumb-shape" data-bg-src="{% static 'assets/img/bg/breadcumb_shape_1_1.png' %}"></div>
+        <div class="shape-mockup breadcumb-shape2 jump d-lg-block d-none" data-right="30px" data-bottom="30px"><img
+                src="{% static 'assets/img/bg/breadcumb_shape_1_2.png' %}" alt="shape"></div>
+        <div class="shape-mockup breadcumb-shape3 jump-reverse d-lg-block d-none" data-left="50px" data-bottom="80px">
+            <img src="{% static 'assets/img/bg/breadcumb_shape_1_3.png' %}" alt="shape">
+        </div>
+        <div class="container">
+            <div class="breadcumb-content text-center">
+                <h1 class="breadcumb-title">Blog Details</h1>
+                <ul class="breadcumb-menu">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li>Blog Details</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section class="th-blog-wrapper blog-details space-top space-extra2-bottom">
+        <div class="container">
+            <div class="row gx-30">
+                <div class="col-xxl-8 col-lg-7">
+                    <div class="th-blog blog-single">
+                        <div class="blog-img"><img src="{{ blog.image.url }}" alt="Blog Image">
+                        </div>
+                        <div class="blog-content">
+                            <div class="blog-meta"><a class="author" href="{% url 'blog'  %}"><i
+                                        class="fas fa-user"></i>{{ blog.author }}</a> <a href="{% url 'blog' %}"><i
+                                        class="fas fa-light fa-calendar-days"></i>
+                                    {{ blog.created_at }}</a> <a href="{% url 'blog_detail' blog.slug %}"><i
+                                        class="fas fa-light fa-book"></i>Business
+                                    Analysis</a></div>
+                            <h2 class="blog-title">{{ blog.title }}</h2>
+                            <p class="text">{{ blog.content|safe }}</p>
+                        </div>
+                        <div class="share-links clearfix">
+                            <div class="row justify-content-between">
+                                <div class="col-md-auto"><span class="share-links-title">Tags:</span>
+                                    <div class="tagcloud"><a href="{% url 'blog' %}">Education</a> <a
+                                            href="{% url 'blog' %}">Online</a></div>
+                                </div>
+                                <div class="col-md-auto text-xl-end"><span class="share-links-title">Share:</span>
+                                    <ul class="social-links">
+                                        <li><a href="https://facebook.com/" target="_blank"><i
+                                                    class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="https://twitter.com/" target="_blank"><i
+                                                    class="fab fa-twitter"></i></a></li>
+                                        <li><a href="https://linkedin.com/" target="_blank"><i
+                                                    class="fab fa-linkedin-in"></i></a></li>
+                                        <li><a href="https://instagram.com/" target="_blank"><i
+                                                    class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="th-comment-form">
+                        <div class="form-title">
+                            <h3 class="blog-inner-title h5">Leave a Reply</h3>
+                            <p class="mb-30">Your email address will not be published. Required fields are marked</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 form-group"><input type="text" placeholder="Full Name*"
+                                    class="form-control"> <i class="far fa-user"></i></div>
+                            <div class="col-md-6 form-group"><input type="text" placeholder="Your Email*"
+                                    class="form-control"> <i class="far fa-envelope"></i></div>
+                            <div class="col-md-12 form-group"><input type="text" placeholder="Website*"
+                                    class="form-control"> <i class="fas fa-globe"></i></div>
+                            <div class="col-12 form-group"><textarea placeholder="Comment*"
+                                    class="form-control"></textarea> <i class="fas fa-pencil"></i></div>
+                            <div class="col-12 form-group mb-0"><button class="th-btn">Submit Message <i
+                                        class="fas fa-arrow-right ms-1"></i></button></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-xxl-4 col-lg-5">
+                    <aside class="sidebar-area">
+                        <div class="widget widget_search">
+                            <form class="search-form"><input type="text" placeholder="Search Product..."> <button
+                                    type="submit"><i class="fas fa-search"></i></button></form>
+                        </div>
+
+                        <div class="widget">
+                            <h3 class="widget_title">Recent Posts</h3>
+                            <div class="recent-post-wrap">
+                                {% for post in blogs %}
+                                <div class="recent-post">
+                                    <div class="media-img"><a href="{% url 'blog_detail' post.slug %}"><img
+                                                src="{{ post.image.url}}" alt="Blog Image"></a></div>
+                                    <div class="media-body">
+                                        <h4 class="post-title"><a class="text-inherit" href="{% url 'blog_detail' post.slug %}">{{ post.title }}</a></h4>
+                                        <div class="recent-post-meta"><a href="{% url 'blog' %}">
+                                            <i class="fas fa-calendar"></i> {{ post.created_at }}</a></div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="widget widget_banner" data-overlay="theme" data-opacity="9"
+                            data-bg-src="{% static 'assets/img/widget/widget-banner-bg.png' %}">
+                            <div class="widget-banner text-center">
+                                <h4 class="title">Need Guidance? We're Just a Call Away</h4>
+                                <div class="logo">
+                                    <img src="{% static 'assets/img/logo-black.png' %}" alt="EduGuild Logo">
+                                </div>
+                                <h5 class="subtitle">Expert Support for Courses, Careers & Admissions</h5>
+                                <a href="tel:+918800112233" class="link">+91 88001 12233</a>
+                                <a href="{% url 'contact' %}" class="th-btn style7 mt-2">Contact Us Now <i
+                                        class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                        <address></address>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- footer section start -->
+    {% include 'partials/footer.html' %}
+    <!-- footer section end -->
+
+
+    <div class="scroll-top"><svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
+                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 307.919;">
+            </path>
+        </svg></div>
+    <script src="{% static 'assets/js/vendor/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/app.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>

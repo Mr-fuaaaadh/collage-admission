@@ -1,0 +1,37 @@
+{% block blog_content%}
+
+<section class="overflow-hidden space" id="blog-sec">
+    <div class="container">
+        <div class="mb-35 text-center text-md-start">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md-8">
+                    <div class="title-area mb-md-0"><span class="sub-title"><i class="fas fa-book me-2"></i> Our
+                            News & Blogs</span>
+                        <h2 class="sec-title">Latests News & Blogs</h2>
+                    </div>
+                </div>
+                <div class="col-md-auto"><a href="" class="th-btn">View All Posts<i
+                            class="fa-solid fa-arrow-right ms-2"></i></a></div>
+            </div>
+        </div>
+        <div class="row slider-shadow th-carousel blog-slider-1" data-slide-show="3" data-lg-slide-show="2"
+            data-md-slide-show="2" data-sm-slide-show="1" data-arrows="true">
+            {% for blog in blogs %}
+            <div class="col-md-6 col-xl-4">
+                <div class="th-blog blog-single style2">
+                    <div class="blog-img"><a href=""><img src="{{ blog.image.url }}" 
+                                alt="Blog Image"></a></div>
+                    <div class="blog-content">
+                        <div class="blog-meta"><a class="author" href=""><i class="fas fa-light fa-user"></i>by
+                                {{ blog.author }}</a> <a href=""><i class="fas fa-light fa-clock"></i>{{ blog.created_at }}</a></div>
+                        <h4 class="box-title"><a href="{% url 'blog_detail' blog.slug %}">{{ blog.title }}</a></h4><a href="{% url 'blog_detail' blog.slug %}" class="link-btn">Read More
+                            Details<i class="fas fa-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section> 
+
+{% endblock %}

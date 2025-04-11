@@ -1,0 +1,131 @@
+{% load static %}
+{% block footer %}
+<footer class="footer-wrapper footer-layout1" data-bg-src="{% static 'assets/img/bg/footer-bg.png' %}">
+    <div class="shape-mockup footer-shape1 jump" data-left="60px" data-top="70px">
+        <img src="{% static 'assets/img/normal/footer-bg-shape1.png' %}" alt="Shape">
+    </div>
+    <div class="shape-mockup footer-shape2 jump-reverse" data-right="80px" data-bottom="120px">
+        <img src="{% static 'assets/img/normal/footer-bg-shape2.png' %}" alt="Shape">
+    </div>
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="footer-contact-wrap">
+                <div class="footer-contact">
+                    <div class="footer-contact_icon icon-btn"><i class="fas fa-phone"></i></div>
+                    <div class="media-body">
+                        <p class="footer-contact_text">Call us anytime:</p>
+                        <a href="tel:+918800112233" class="footer-contact_link">+91 88001 12233</a>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="footer-contact">
+                    <div class="footer-contact_icon icon-btn"><i class="fas fa-envelope"></i></div>
+                    <div class="media-body">
+                        <p class="footer-contact_text">Email us 24/7:</p>
+                        <a href="mailto:contact@educareguild.com" class="footer-contact_link">contact@educareguild.com</a>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="footer-contact">
+                    <div class="footer-contact_icon icon-btn"><i class="fas fa-location-dot"></i></div>
+                    <div class="media-body">
+                        <p class="footer-contact_text">Our Office:</p>
+                        <a href="https://maps.google.com" class="footer-contact_link" target="_blank">
+                            4th Floor, EduGuild Tower, Kochi, Kerala
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-wrap" data-bg-src="{% static 'assets/img/bg/jiji.png' %}">
+        <div class="widget-area">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-md-6 col-xxl-3 col-xl-3">
+                        <div class="widget footer-widget">
+                            <div class="th-widget-about">
+                                <div class="about-logo">
+                                    <a href="{% url 'home' %}">
+                                        <img src="{% static 'assets/img/logo-white.png' %}" alt="EduGuild Logo">
+                                    </a>
+                                </div>
+                                <p class="about-text">
+                                    Guiding students toward the right academic and career paths across India and abroad. We’re with you at every step of your education journey.
+                                </p>
+                                <div class="th-social">
+                                    <h6 class="title text-white">Follow us on:</h6>
+                                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xl-auto">
+                        <div class="widget widget_nav_menu footer-widget">
+                            <h3 class="widget_title">Our Services</h3>
+                            <ul class="menu">
+                                <li><a href="#">Career Counseling</a></li>
+                                <li><a href="#">Course Selection</a></li>
+                                <li><a href="#">College Admission Support</a></li>
+                                <li><a href="#">Scholarship Assistance</a></li>
+                                <li><a href="#">Study Abroad</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xl-auto">
+                        <div class="widget widget_nav_menu footer-widget">
+                            <h3 class="widget_title">Resources</h3>
+                            <ul class="menu">
+                                <li><a href="{% url 'contact' %}">FAQs</a></li>
+                                <li><a href="{% url 'contact' %}">Support</a></li>
+                                <li><a href="{% url 'contact' %}">Student Reviews</a></li>
+                                <li><a href="{% url 'contact' %}">Blog</a></li>
+                                <li><a href="{% url 'contact' %}">Documentation</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xxl-3 col-xl-3">
+                        <div class="widget newsletter-widget footer-widget">
+                            <h3 class="widget_title">Stay Updated</h3>
+                            <p class="footer-text">Subscribe to get the latest news, tips, and updates from our team.</p>
+                            <form class="newsletter-form form-group">
+                                <input class="form-control" type="email" placeholder="Enter your email" required>
+                                <i class="far fa-envelope"></i>
+                                <button type="submit" class="th-btn style3">
+                                    Subscribe Now <i class="fas fa-arrow-right ms-1"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright-wrap">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-md-6">
+                        <p class="copyright-text">
+                            © 2025 <a href="{% url 'home' %}">EduGuild</a>. All Rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-end d-none d-md-block">
+                        <ul class="footer-links">
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

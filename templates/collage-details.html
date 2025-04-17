@@ -5,10 +5,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Edura - Online Courses & Education HTML Template - Courses Details</title>
-    <meta name="author" content="themeholy">
-    <meta name="description" content="Edura - Online Courses & Education HTML Template">
-    <meta name="keywords" content="Edura - Online Courses & Education HTML Template">
+    <title>EduGuild - College Details | Explore Top Colleges in India</title>
+    <meta name="author" content="EduGuild Team">
+    <meta name="description"
+        content="Discover detailed information about top Indian colleges including their courses, fees, eligibility, and admission process on EduGuild.">
+    <meta name="keywords"
+        content="EduGuild, College Details, Indian Colleges, College Admissions, Courses, Fees, Eligibility, Top Colleges in India">
     <meta name="robots" content="INDEX,FOLLOW">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="57x57" href="{% static 'assets/img/favicons/apple-icon-57x57.png' %}">
@@ -33,12 +35,96 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Jost:wght@300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700&display=swap"
         rel="stylesheet">
-        
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modal fade-in effect */
+        .modal.fade .modal-dialog {
+            animation: modalFadeIn 0.5s ease-out;
+        }
+
+        /* Smooth transition for input fields */
+        .animated-input {
+            position: relative;
+            border-radius: 12px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Focus effect with subtle scale and glow */
+        .animated-input:focus {
+            transform: scale(1.05);
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+
+        /* Button animation */
+        .animated-btn {
+            animation: bounceIn 0.7s ease-out;
+        }
+
+        /* Modal fade-in animation */
+        @keyframes modalFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Input field focus animation */
+        .animated-input {
+            padding: 12px;
+            border: 1px solid #ced4da;
+        }
+
+        /* Button bounce animation */
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            60% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Custom hover and focus effects on input fields */
+        .animated-input:hover {
+            border-color: #0056b3;
+        }
+
+        /* Styling for submit button */
+        .animated-btn {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Hover effect for button */
+        .animated-btn:hover {
+            transform: translateY(-3px);
+            background-color: #004085;
+        }
+
+        /* Focus effect for button */
+        .animated-btn:focus {
+            outline: none;
+            transform: translateY(0);
+            background-color: #003366;
+        }
+    </style>
 
     <link rel="stylesheet" href="{% static 'assets/css/app.min.css' %}">
     <!-- <link rel="stylesheet" href="assets/css/fontawesome.min.css"> -->
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
 </head>
 
 <body>
@@ -84,22 +170,23 @@
                                             class="meta-title">Instructor: </span><a href="">Max Alexix</a></span></li>
                                 <li><span class="meta-title">Location: </span><a href="">{{ college.location }}</a></li>
                                 </li>
-                                <li><span class="meta-title">Accrediction: </span><a href="">{{ college.accreditation }}</a>
+                                <li>
+                                    <span class="meta-title">Accrediction: </span><a href="">{{ college.accreditation }}</a>
                                 </li>
                                 <li><span class="meta-title">Established year: </span><a href="">{{ college.established_year }}</a>
                                 </li>
                                 <li>
                                     <span class="meta-title">Review:</span>
                                     <div class="course-rating d-flex align-items-center gap-1">
-                                        <!-- Star Icons -->
+                                        
                                         <div class="star-rating">
                                             <i class="fas fa-star text-warning"></i>
                                             <i class="fas fa-star text-warning"></i>
                                             <i class="fas fa-star text-warning"></i>
                                             <i class="fas fa-star text-warning"></i>
-                                            <i class="far fa-star text-warning"></i> <!-- Empty star -->
+                                            <i class="far fa-star text-warning"></i> 
                                         </div>
-                                        <!-- Rating Value -->
+                                        
                                         <span>(4.00)</span>
                                     </div>
                                 </li>
@@ -157,39 +244,46 @@
                                         </div>
                                     </div>
                                 </div> -->
-                                <div class="tab-pane fade" id="instructor" role="tabpanel" aria-labelledby="instructor-tab">
+                                <div class="tab-pane fade" id="instructor" role="tabpanel"
+                                    aria-labelledby="instructor-tab">
                                     {% for course in courses %}
-                                        <div class="course-instructor">
-                                            <div class="course-author-box d-flex align-items-center">
-                                                <div class="author-img">
-                                                    {% if course.image %}
-                                                        <img src="{{ course.image.url }}" alt="{{ course.name }} Image">
-                                                    {% else %}
-                                                        <img src="{% static 'assets/img/course/author.png' %}" alt="Default Author Image">
-                                                    {% endif %}
+                                    <div class="course-instructor">
+                                        <div class="course-author-box d-flex align-items-center">
+                                            <div class="author-img">
+                                                {% if course.image %}
+                                                <img src="{{ course.image.url }}" alt="{{ course.name }} Image">
+                                                {% else %}
+                                                <img src="{% static 'assets/img/course/author.png' %}"
+                                                    alt="Default Author Image">
+                                                {% endif %}
+                                            </div>
+                                            <div class="media-body ms-3">
+                                                <h3 class="author-name">
+                                                    <a class="text-inherit"
+                                                        href="{% url 'college_apply' course.pk %}">{{ course.name }}</a>
+                                                </h3>
+                                                <!-- <p class="author-text">{{ course.description|truncatewords:25 }}</p> -->
+                                                <div class="author-meta">
+                                                    <a href="#"><i class="fas fa-file-video"></i> {{ course.get_level_display }} Level</a>
+                                                    <a href="#"><i class="fas fa-book"></i> {{ course.get_mode_display }} Course</a>
+                                                    <span><i class="fas fa-users"></i> 2500 Students</span>
                                                 </div>
-                                                <div class="media-body ms-3">
-                                                    <h3 class="author-name">
-                                                        <a class="text-inherit" href="{% url 'college_apply' course.pk %}">{{ course.name }}</a>
-                                                    </h3>
-                                                    <!-- <p class="author-text">{{ course.description|truncatewords:25 }}</p> -->
-                                                    <div class="author-meta">
-                                                        <a href="#"><i class="fas fa-file-video"></i> {{ course.get_level_display }} Level</a>
-                                                        <a href="#"><i class="fas fa-book"></i> {{ course.get_mode_display }} Course</a>
-                                                        <span><i class="fas fa-users"></i> 2500 Students</span>
-                                                    </div>
-                                                    <div class="th-social">
-                                                        <a href="https://facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                                                        <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-                                                        <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                                                        <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-                                                    </div>
+                                                <div class="th-social">
+                                                    <a href="https://facebook.com/" target="_blank"><i
+                                                            class="fab fa-facebook-f"></i></a>
+                                                    <a href="https://twitter.com/" target="_blank"><i
+                                                            class="fab fa-twitter"></i></a>
+                                                    <a href="https://linkedin.com/" target="_blank"><i
+                                                            class="fab fa-linkedin-in"></i></a>
+                                                    <a href="https://instagram.com/" target="_blank"><i
+                                                            class="fab fa-instagram"></i></a>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                     {% endfor %}
                                 </div>
-                                
+
                                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                                     <div class="course-Reviews">
                                         <div class="th-comments-wrap">
@@ -302,16 +396,24 @@
                 <div class="col-xxl-3 col-lg-4">
                     <aside class="sidebar-area">
                         <div class="widget widget_info">
-                            <div class="th-video"><img src="{% static 'assets/img/widget/video_1.jpg' %}" alt="video">
-                                <a href="https://www.youtube.com/watch?v=_sI_Ps7JSEk" class="play-btn popup-video"><i
-                                        class="fas fa-play"></i></a></div><span class="h4 course-price"></span></span> <a href="" class="th-btn">apply</a>
+                            <div class="th-video">
+                                <img src="{% static 'assets/img/widget/video_1.jpg' %}" alt="video">
+                                <a href="https://www.youtube.com/watch?v=_sI_Ps7JSEk" class="play-btn popup-video">
+                                    <i class="fas fa-play"></i>
+                                </a>
+                            </div>
+                            <span class="h4 course-price"></span>
+                            </span>
+                            <a href="#" class="th-btn" data-bs-toggle="modal" data-bs-target="#applyModal">Apply</a>
+
                             <a href="c" class="th-btn style4">Contact Now</a>
                             <h3 class="widget_title">Course Information</h3>
                             <div class="info-list">
                                 <ul>
                                     <li><i class="fas fa-light fa-user"></i> <strong>Instructor: </strong><span>Kevin
                                             Perry</span></li>
-                                    <li><i class="fas fa-light fa-file"></i> <strong>Lessons: </strong><span>8</span></li>
+                                    <li><i class="fas fa-light fa-file"></i> <strong>Lessons: </strong><span>8</span>
+                                    </li>
                                     <li><i class="fas fa-light fa-clock"></i> <strong>Duration: </strong><span>15h 30m
                                             36s</span></li>
                                     <li><i class="fas fa-light fa-tag"></i> <strong>Course level:
@@ -329,300 +431,110 @@
             </div>
         </div>
     </section>
-    <section class="space-bottom">
-        <div class="container">
-            <div class="title-area text-center"><span class="sub-title"><i class="fas fa-book me-2"></i> Related
-                    Courses</span>
-                <h2 class="sec-title">Courses You May Like</h2>
-            </div>
-            <div class="row slider-shadow th-carousel course-slider-1" data-slide-show="4" data-ml-slide-show="3"
-                data-lg-slide-show="3" data-md-slide-show="2" data-sm-slide-show="1" data-arrows="true">
-                <div class="col-md-6 col-xl-4">
-                    <div class="course-box style2">
-                        <div class="course-img"><img src="{% static 'assets/img/course/course_1_1.png' %}" alt="img">
-                            <span class="tag"><i class="fas fa-clock"></i> 03 WEEKS</span></div>
-                        <div class="course-content">
-                            <div class="course-rating">
-                                <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span
-                                        style="width:79%">Rated <strong class="rating">4.00</strong> out of 5</span>
-                                </div>(4.7)
-                            </div>
-                            <h3 class="course-title"><a href="">Education Software and PHP and JS
-                                    System Script</a></h3>
-                            <div class="course-meta"><span><i class="fas fa-file"></i>Lesson 8</span> <span><i
-                                        class="fas fa-user"></i>Students 60+</span> <span><i
-                                        class="fas fa-chart-simple"></i>Beginner</span></div>
-                            <div class="course-author">
-                                <div class="author-info"><img src="{% static 'assets/img/course/author.png' %}"
-                                        alt="author"> <a href="" class="author-name">Max Alexix</a></div>
-                                <div class="offer-tag">Free</div>
-                            </div>
-                        </div>
-                    </div>
+
+
+    <!-- Bootstrap Modal -->
+    <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content rounded-5 border-0 shadow-lg" style="background-color: #ffffff;">
+                <div class="modal-header border-0 pb-2">
+                    <h5 class="modal-title fw-bold text-primary" id="applyModalLabel">Apply for this Course</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="course-box style2">
-                        <div class="course-img"><img src="{% static 'assets/img/course/course_1_2.png' %}" alt="img">
-                            <span class="tag"><i class="fas fa-clock"></i> 02 WEEKS</span></div>
-                        <div class="course-content">
-                            <div class="course-rating">
-                                <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span
-                                        style="width:79%">Rated <strong class="rating">4.00</strong> out of 5</span>
-                                </div>(4.7)
+                <div class="modal-body px-4 py-3">
+
+                    {% if success %}
+                    <div class="alert alert-success">{{ success }}</div>
+                    {% endif %}
+                    {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                    {% endif %}
+
+                    <form id="applyForm" method="post" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row g-6">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold"> Name</label>
+                                {{ form.name }}
+                                {{ form.name.errors }}
                             </div>
-                            <h3 class="course-title"><a href="">Learn Figma – UI/UX Design Essential
-                                    Training</a></h3>
-                            <div class="course-meta"><span><i class="fas fa-file"></i>Lesson 9</span> <span><i
-                                        class="fas fa-user"></i>Students 50+</span> <span><i
-                                        class="fas fa-chart-simple"></i>Beginner</span></div>
-                            <div class="course-author">
-                                <div class="author-info"><img src="{% static 'assets/img/course/author.png' %}"
-                                        alt="author"> <a href="" class="author-name">Kevin Perry</a></div>
-                                <div class="offer-tag">Free</div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Course Name</label>
+                                {{ form.course }}
+                                {{ form.course.errors }}
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="course-box style2">
-                        <div class="course-img"><img src="{% static 'assets/img/course/course_1_3.png' %}" alt="img">
-                            <span class="tag"><i class="fas fa-clock"></i> 04 WEEKS</span></div>
-                        <div class="course-content">
-                            <div class="course-rating">
-                                <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span
-                                        style="width:79%">Rated <strong class="rating">4.00</strong> out of 5</span>
-                                </div>(4.7)
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold">Email </label>
+                                {{ form.email }}
+                                {{ form.email.errors }}
                             </div>
-                            <h3 class="course-title"><a href="">Advanced Android 12 & Kotlin
-                                    Development Course</a></h3>
-                            <div class="course-meta"><span><i class="fas fa-file"></i>Lesson 7</span> <span><i
-                                        class="fas fa-user"></i>Students 30+</span> <span><i
-                                        class="fas fa-chart-simple"></i>Beginner</span></div>
-                            <div class="course-author">
-                                <div class="author-info"><img src="{% static 'assets/img/course/author.png' %}"
-                                        alt="author"> <a href="" class="author-name">Max Alexix</a></div>
-                                <div class="offer-tag">Free</div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold">Phone </label>
+                                {{ form.phone }}
+                                {{ form.phone.errors }}
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="course-box style2">
-                        <div class="course-img"><img src="{% static 'assets/img/course/course_1_4.png' %}" alt="img">
-                            <span class="tag"><i class="fas fa-clock"></i> 02 WEEKS</span></div>
-                        <div class="course-content">
-                            <div class="course-rating">
-                                <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span
-                                        style="width:79%">Rated <strong class="rating">4.00</strong> out of 5</span>
-                                </div>(4.7)
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold">State</label>
+                                {{ form.state }}
+                                {{ form.state.errors }}
                             </div>
-                            <h3 class="course-title"><a href="">IT Statistics Data Science and
-                                    Business Analysis</a></h3>
-                            <div class="course-meta"><span><i class="fas fa-file"></i>Lesson 10</span> <span><i
-                                        class="fas fa-user"></i>Students 20+</span> <span><i
-                                        class="fas fa-chart-simple"></i>Beginner</span></div>
-                            <div class="course-author">
-                                <div class="author-info"><img src="{% static 'assets/img/course/author.png' %}"
-                                        alt="author"> <a href="" class="author-name">Kevin Perry</a></div>
-                                <div class="offer-tag">Free</div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold">Qualification</label>
+                                {{ form.qualification }}
+                                {{ form.qualification.errors }}
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold">PIN </label>
+                                {{ form.pincode }}
+                                {{ form.pincode.errors }}
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-semibold">Message</label>
+                                {{ form.message }}
+                                {{ form.message.errors }}
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="course-box style2">
-                        <div class="course-img"><img src="{% static 'assets/img/course/course_1_5.png' %}" alt="img">
-                            <span class="tag"><i class="fas fa-clock"></i> 03 WEEKS</span></div>
-                        <div class="course-content">
-                            <div class="course-rating">
-                                <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span
-                                        style="width:79%">Rated <strong class="rating">4.00</strong> out of 5</span>
-                                </div>(4.7)
-                            </div>
-                            <h3 class="course-title"><a href="">The Complete HTML & CSS Bootcamp 2023
-                                    Edition</a></h3>
-                            <div class="course-meta"><span><i class="fas fa-file"></i>Lesson 8</span> <span><i
-                                        class="fas fa-user"></i>Students 60+</span> <span><i
-                                        class="fas fa-chart-simple"></i>Beginner</span></div>
-                            <div class="course-author">
-                                <div class="author-info"><img src="{% static 'assets/img/course/author.png' %}"
-                                        alt="author"> <a href="" class="author-name">Max Alexix</a></div>
-                                <div class="offer-tag">Free</div>
-                            </div>
+                        <div class="mt-4 text-end">
+                            <button type="submit" class="btn btn-primary rounded-4 px-5 py-2 shadow-sm animated-btn">
+                                Submit Application
+                            </button>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="course-box style2">
-                        <div class="course-img"><img src="{% static 'assets/img/course/course_1_6.png' %}" alt="img">
-                            <span class="tag"><i class="fas fa-clock"></i> 02 WEEKS</span></div>
-                        <div class="course-content">
-                            <div class="course-rating">
-                                <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span
-                                        style="width:79%">Rated <strong class="rating">4.00</strong> out of 5</span>
-                                </div>(4.7)
-                            </div>
-                            <h3 class="course-title"><a href="">Great Graphical Design That Catches
-                                    Eyes</a></h3>
-                            <div class="course-meta"><span><i class="fas fa-file"></i>Lesson 9</span> <span><i
-                                        class="fas fa-user"></i>Students 50+</span> <span><i
-                                        class="fas fa-chart-simple"></i>Beginner</span></div>
-                            <div class="course-author">
-                                <div class="author-info"><img src="{% static 'assets/img/course/author.png' %}"
-                                        alt="author"> <a href="" class="author-name">Kevin Perry</a></div>
-                                <div class="offer-tag">Free</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="course-box style2">
-                        <div class="course-img"><img src="{% static 'assets/img/course/course_1_7.png' %}" alt="img">
-                            <span class="tag"><i class="fas fa-clock"></i> 04 WEEKS</span></div>
-                        <div class="course-content">
-                            <div class="course-rating">
-                                <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span
-                                        style="width:79%">Rated <strong class="rating">4.00</strong> out of 5</span>
-                                </div>(4.7)
-                            </div>
-                            <h3 class="course-title"><a href="">Marketing 2023: Complete Guide To
-                                    Social Growth</a></h3>
-                            <div class="course-meta"><span><i class="fas fa-file"></i>Lesson 7</span> <span><i
-                                        class="fas fa-user"></i>Students 30+</span> <span><i
-                                        class="fas fa-chart-simple"></i>Beginner</span></div>
-                            <div class="course-author">
-                                <div class="author-info"><img src="{% static 'assets/img/course/author.png' %}"
-                                        alt="author"> <a href="" class="author-name">Max Alexix</a></div>
-                                <div class="offer-tag">Free</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="course-box style2">
-                        <div class="course-img"><img src="{% static 'assets/img/course/course_1_8.png' %}" alt="img">
-                            <span class="tag"><i class="fas fa-clock"></i> 02 WEEKS</span></div>
-                        <div class="course-content">
-                            <div class="course-rating">
-                                <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span
-                                        style="width:79%">Rated <strong class="rating">4.00</strong> out of 5</span>
-                                </div>(4.7)
-                            </div>
-                            <h3 class="course-title"><a href="">The complete business plan course
-                                    includes 20+ template</a></h3>
-                            <div class="course-meta"><span><i class="fas fa-file"></i>Lesson 10</span> <span><i
-                                        class="fas fa-user"></i>Students 20+</span> <span><i
-                                        class="fas fa-chart-simple"></i>Beginner</span></div>
-                            <div class="course-author">
-                                <div class="author-info"><img src="{% static 'assets/img/course/author.png' %}"
-                                        alt="author"> <a href="" class="author-name">Kevin Perry</a></div>
-                                <div class="offer-tag">Free</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="course-box style2">
-                        <div class="course-img"><img src="{% static 'assets/img/course/course_1_9.png' %}" alt="img">
-                            <span class="tag"><i class="fas fa-clock"></i> 03 WEEKS</span></div>
-                        <div class="course-content">
-                            <div class="course-rating">
-                                <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span
-                                        style="width:79%">Rated <strong class="rating">4.00</strong> out of 5</span>
-                                </div>(4.7)
-                            </div>
-                            <h3 class="course-title"><a href="">Fashion Photography From To
-                                    Professional Courses</a></h3>
-                            <div class="course-meta"><span><i class="fas fa-file"></i>Lesson 8</span> <span><i
-                                        class="fas fa-user"></i>Students 60+</span> <span><i
-                                        class="fas fa-chart-simple"></i>Beginner</span></div>
-                            <div class="course-author">
-                                <div class="author-info"><img src="{% static 'assets/img/course/author.png' %}"
-                                        alt="author"> <a href="" class="author-name">Max Alexix</a></div>
-                                <div class="offer-tag">Free</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="course-box style2">
-                        <div class="course-img"><img src="{% static 'assets/img/course/course_1_10.png' %}" alt="img">
-                            <span class="tag"><i class="fas fa-clock"></i> 02 WEEKS</span></div>
-                        <div class="course-content">
-                            <div class="course-rating">
-                                <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span
-                                        style="width:79%">Rated <strong class="rating">4.00</strong> out of 5</span>
-                                </div>(4.7)
-                            </div>
-                            <h3 class="course-title"><a href="">Fashion and Luxury Fashion In A
-                                    Changing</a></h3>
-                            <div class="course-meta"><span><i class="fas fa-file"></i>Lesson 9</span> <span><i
-                                        class="fas fa-user"></i>Students 50+</span> <span><i
-                                        class="fas fa-chart-simple"></i>Beginner</span></div>
-                            <div class="course-author">
-                                <div class="author-info"><img src="{% static 'assets/img/course/author.png' %}"
-                                        alt="author"> <a href="" class="author-name">Kevin Perry</a></div>
-                                <div class="offer-tag">Free</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="course-box style2">
-                        <div class="course-img"><img src="{% static 'assets/img/course/course_1_11.png' %}" alt="img">
-                            <span class="tag"><i class="fas fa-clock"></i> 04 WEEKS</span></div>
-                        <div class="course-content">
-                            <div class="course-rating">
-                                <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span
-                                        style="width:79%">Rated <strong class="rating">4.00</strong> out of 5</span>
-                                </div>(4.7)
-                            </div>
-                            <h3 class="course-title"><a href="">Best Statistics Data Science &
-                                    Business Analysis</a></h3>
-                            <div class="course-meta"><span><i class="fas fa-file"></i>Lesson 7</span> <span><i
-                                        class="fas fa-user"></i>Students 30+</span> <span><i
-                                        class="fas fa-chart-simple"></i>Beginner</span></div>
-                            <div class="course-author">
-                                <div class="author-info"><img src="{% static 'assets/img/course/author.png' %}"
-                                        alt="author"> <a href="" class="author-name">Max Alexix</a></div>
-                                <div class="offer-tag">Free</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="course-box style2">
-                        <div class="course-img"><img src="{% static 'assets/img/course/course_1_12.png' %}" alt="img">
-                            <span class="tag"><i class="fas fa-clock"></i> 02 WEEKS</span></div>
-                        <div class="course-content">
-                            <div class="course-rating">
-                                <div class="star-rating" role="img" aria-label="Rated 4.00 out of 5"><span
-                                        style="width:79%">Rated <strong class="rating">4.00</strong> out of 5</span>
-                                </div>(4.7)
-                            </div>
-                            <h3 class="course-title"><a href="">Angular with Nodejs Fullstack
-                                    Development</a></h3>
-                            <div class="course-meta"><span><i class="fas fa-file"></i>Lesson 10</span> <span><i
-                                        class="fas fa-user"></i>Students 20+</span> <span><i
-                                        class="fas fa-chart-simple"></i>Beginner</span></div>
-                            <div class="course-author">
-                                <div class="author-info"><img src="{% static 'assets/img/course/author.png' %}"
-                                        alt="author"> <a href="" class="author-name">Kevin Perry</a></div>
-                                <div class="offer-tag">Free</div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-     <!-- Footer section start -->
-     {% include 'partials/footer.html' %}
-     <!-- Footer section end -->
-    
+    </div>
+        {% if success or error %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var applyModal = new bootstrap.Modal(document.getElementById('applyModal'));
+            applyModal.show();
+        });
+    </script>
+    {% endif %}
+
+    <!-- choose cllage start section  -->
+    {% include 'partials/colleges.html' %}
+    <!-- collage end section  -->
+
+
+    <!-- Footer section start -->
+    {% include 'partials/footer.html' %}
+    <!-- Footer section end -->
+
     <script src="{% static 'assets/js/vendor/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'assets/js/app.min.js' %}"></script>
     <script src="{% static 'assets/js/main.js' %}"></script>
+    <!-- <script>
+        document.getElementById('applyForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Application Submitted! Thank you.');
+            var modal = bootstrap.Modal.getInstance(document.getElementById('applyModal'));
+            modal.hide();
+            this.reset();
+        });
+    </script> -->
+
 </body>
 
 </html>

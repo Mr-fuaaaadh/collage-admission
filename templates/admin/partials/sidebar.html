@@ -17,17 +17,12 @@
       </li>
       <li class="sidebar-list">
         <i class="fas fa-thumbtack"></i>
-        <a class="sidebar-link" href="javascript:void(0)">
+        <a class="sidebar-link" href="{% url 'dashboard' %}">
           <i class="fas fa-home stroke-icon"></i>
           <h6>Dashboards</h6>
           <span class="badge">3</span>
           <i class="fas fa-angle-right icli"></i>
         </a>
-        <ul class="sidebar-submenu">
-          <li> <a href="{% url 'home' %}">Default</a></li>
-          <li> <a href="dashboard-02.html">Ecommerce</a></li>
-          <li> <a href="dashboard-03.html">Education</a></li>
-        </ul>
       </li>
       <li class="sidebar-list">
         <i class="fas fa-thumbtack"></i>
@@ -66,6 +61,32 @@
         <ul class="sidebar-submenu">
           <li> <a href="{% url 'blog_create' %}">Add Blog</a></li>
           <li> <a href="{% url 'blog_list' %}">Blogs</a></li>
+        </ul>
+      </li>
+
+      <li class="sidebar-list">
+        <i class="fas fa-thumbtack"></i>
+        <a class="sidebar-link" href="javascript:void(0)">
+          <i class="fas fa-university stroke-icon"></i>
+          <h6>Admission</h6>
+          <i class="fas fa-angle-right icli"></i>
+        </a>
+        <ul class="sidebar-submenu">
+          <li> <a href="{% url 'admission_enquiry' %}">Enquiry</a></li>
+          <!-- <li> <a href="">Blogs</a></li> -->
+        </ul>
+      </li>
+
+      <li class="sidebar-list">
+        <i class="fas fa-thumbtack"></i>
+        <a class="sidebar-link" href="javascript:void(0)">
+          <i class="fas fa-university stroke-icon"></i>
+          <h6>Review</h6>
+          <i class="fas fa-angle-right icli"></i>
+        </a>
+        <ul class="sidebar-submenu">
+          <li> <a href="{% url 'review_create' %}">Add review</a></li>
+          <li> <a href="{% url 'review_list' %}">Reviews</a></li>
         </ul>
       </li>
 

@@ -12,4 +12,8 @@ urlpatterns = [
     path('collage/<int:pk>/courses/', CourseListView.as_view(), name='course_list'),
     path('collage/<int:pk>/course/delete/', CourseDeleteView, name='course_delete'),
     path('collage/<int:pk>/course/edit/', CourseUpdateView, name='course_update'),
+
+    path('collage/admission/enquiry/', AllAdmissionEnquiryView.as_view(), name='admission_enquiry'),
+    path('admission/enquiry/mark/viewed/<int:pk>/', AdmissionEnquiryDetailView.as_view(), name='admission_enquiry_mark_viewed'),
+    path('admission/enquiry/<int:pk>/mark/viewed/', MarkAsViewedView.as_view(), name='admission_enquiry_mark_viewed_column'),
 ]

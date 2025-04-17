@@ -1,12 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import ListView, UpdateView, DetailView
 from django.views import View
 from django.urls import reverse_lazy
 from django.utils.text import slugify
 from django.db.models import Q
 from django.contrib import messages
 from admission_app.models import College
-from.models import Courses
+from.models import Courses, Admission
 from django.core.exceptions import ValidationError
+from admission_app.forms import AdmissionApplicationForm
 from admission_app.models import University
 from django.http import JsonResponse
 from .forms import CourseForm, CollageForm
@@ -239,3 +241,53 @@ def display_message(request, message, level="info"):
         "error": messages.ERROR,
     }
     messages.add_message(request, levels.get(level, messages.INFO), message)
+
+
+
+class PageTitleMixin:
+    """Mixin to inject a page title into the context."""
+    page_title: str = ""
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_title'] = self.page_title
+        return context
+
+
+class AllAdmissionEnquiryView(PageTitleMixin, ListView):
+    """
+    View to list all admission enquiries.
+    Displays 10 enquiries per page.
+    """
+    model = Admission
+    template_name = 'admin/admission_enquiry.html'
+    context_object_name = 'enquiries'
+    paginate_by = 10
+    page_title = "Admission Enquiries"
+
+    def get_queryset(self):
+        return Admission.objects.order_by('-created_at')
+
+
+class AdmissionEnquiryDetailView(PageTitleMixin, DetailView):
+    """
+    View to display the detail of a single admission enquiry.
+    """
+    model = Admission
+    template_name = 'admin/admission_enquiry_detail.html'
+    context_object_name = 'enquiry'
+    page_title = "Admission Enquiry Detail"
+
+
+class MarkAsViewedView(View):
+    """
+    View to update the is_viewed field of an enquiry.
+    Triggered by a POST request from the detail page.
+    """
+    def get(self, request, pk):
+        enquiry = get_object_or_404(Admission, pk=pk)
+        if not enquiry.is_viewed:
+            enquiry.is_viewed = True
+            enquiry.save()
+        return redirect('admission_enquiry_mark_viewed', pk=pk)
+    

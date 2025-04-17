@@ -1,7 +1,7 @@
 @use "sass:math";
 
 :root {
-    --theme-color: #0D5EF4;
+    --theme-color: #007bff;
     --theme-color2: #F20F10;
     --title-color: #0F2239;
     --body-color: #4D5765;
@@ -15,18 +15,15 @@
     --border-color: #ecf1f9;
     --title-font: 'Jost', sans-serif;
     --body-font: 'Roboto', sans-serif;
-    --icon-font: "Font Awesome 6 Pro";
+    --icon-font: "Font Awesome 6 Free"; /* Or 5 Free, depending on what you're using */
     --main-container: 1380px;
     --container-gutters: 24px;
     --section-space: 120px;
     --section-space-mobile: 80px;
     --section-title-space: 70px;
     --ripple-ani-duration: 5s;
-    --icon-font: "Font Awesome 5 Free";
-    --theme-color: #007bff; 
-    --icon-font: "Font Awesome 6 Free"; /* or "Font Awesome 5 Free" if you're on v5 */
-    --theme-color: #007bff; /* Replace with your desired color */
 }
+
 
 html,
 body {
@@ -9572,13 +9569,14 @@ ol.wp-block-rss {
 }
 
 .breadcumb-menu li:after {
-    content: '\f061';
+    content: '\f105'; 
     position: relative;
     margin-left: 10px;
     font-weight: 400;
     font-size: 15px;
     color: var(--white-color);
-    font-family: var(--icon-font)
+    font-family: var(--icon-font);
+    font-family: 'Font Awesome 5 Free'; /* or 6 */
 }
 
 .breadcumb-menu li a:hover {

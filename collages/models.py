@@ -52,6 +52,9 @@ class Blog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+
+    
+
     class Meta:
         ordering = ['-created_at']
         verbose_name = 'Blog Post'
@@ -59,3 +62,24 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+
+
+class Admission(models.Model):
+    """Model representing an admission process for a college course."""
+    course = models.CharField(max_length=100, help_text="Name of the course for admission")
+    phone = models.CharField(max_length=15, help_text="Contact number for admission inquiries")
+    email = models.EmailField(max_length=255, help_text="Contact email for admission inquiries")
+    name = models.CharField(max_length=100, help_text="Name of the applicant")
+    state = models.CharField(max_length=100, help_text="State of residence")
+    pincode = models.CharField(max_length=10, help_text="Postal code of the applicant's address")
+    qualification = models.CharField(max_length=100, help_text="Highest qualification of the applicant")
+    message = models.TextField(help_text="Additional message or query from the applicant")
+    is_viewed = models.BooleanField(default=False, help_text="Has the admission inquiry been viewed?")
+    created_at = models.DateTimeField(auto_now_add=True,null=True, help_text="Date when the admission inquiry was created")
+
+
+    class Meta :
+        db_table = 'admissions'
+

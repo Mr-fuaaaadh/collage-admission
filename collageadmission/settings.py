@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'collage_admin',
     'collages',
     'django_ckeditor_5',  # CKEditor for rich text editing
-    'ckeditor'
+    'ckeditor',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

@@ -16,118 +16,45 @@
                 <div class="th-carousel testi-slider1 dot-style2 row" id="testimonial-slider1" data-slide-show="2"
                     data-ml-slide-show="2" data-lg-slide-show="1" data-md-slide-show="1" data-dots="true"
                     data-arrows="false">
+                    {% for comment in reviews %}
                     <div class="col-lg-6">
                         <div class="testi-box">
-                            <div class="testi-box-bg-shape"><svg width="150" height="137" viewBox="0 0 150 137"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <div class="testi-box-bg-shape">
+                                <svg width="150" height="137" viewBox="0 0 150 137" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M0 9.99951C0 4.47666 4.47715 -0.000488281 10 -0.000488281H140C145.523 -0.000488281 150 4.47666 150 9.99951V10.5803C150 13.3951 148.814 16.0796 146.732 17.9747L18.8619 134.394C17.0205 136.07 14.6199 137 12.1297 137H10C4.47715 137 0 132.522 0 127V9.99951Z"
                                         fill="#0D5EF4" />
-                                </svg></div>
+                                </svg>
+                            </div>
                             <div class="testi-box_content">
-                                <div class="testi-box_img"><img src="{% static 'assets/img/testimonial/testi_1_1.jpg' %}"
-                                        alt="Avater"></div>
-                                <p class="testi-box_text">“Quickly maximize visionary solutions after mission
-                                    critical action items productivate premium portals for impactful -services
-                                    stinctively negotiate enabled niche markets via growth strategies”</p>
+                                <div class="testi-box_img">
+                                    {% if comment.image %}
+                                    <img src="{{ comment.image.url }}" alt="{{ comment.author }}">
+                                    {% else %}
+                                    <img src="{% static 'default-user.png' %}" alt="Default Image">
+                                    {% endif %}
+                                </div>
+                                <p class="testi-box_text">“{{ comment.comment }}”</p>
                             </div>
                             <div class="testi-box_bottom">
                                 <div>
-                                    <h3 class="testi-box_name">David H. Smith</h3><span class="testi-box_desig">IT
-                                        Student</span>
+                                    <h3 class="testi-box_name">{{ comment.author }}</h3>
+                                    <span class="testi-box_desig">Student</span>
                                 </div>
-                                <div class="testi-box_review"><i class="fas fa-solid fa-star"></i> <i
-                                        class="fas fa-solid fa-star"></i> <i class="fas fa-solid fa-star"></i>
-                                    <i class="fas fa-solid fa-star"></i> <i class="fas fa-solid fa-star"></i>
-                                    (4.7)
+                                <div class="testi-box_review">
+                                    {% for i in "12345" %}
+                                    {% if forloop.counter <= comment.rating %} <i class="fas fa-star text-warning"></i>
+                                        {% else %}
+                                        <i class="far fa-star text-muted"></i>
+                                        {% endif %}
+                                        {% endfor %}
+                                        ({{ comment.rating }})
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="testi-box">
-                            <div class="testi-box-bg-shape"><svg width="150" height="137" viewBox="0 0 150 137"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M0 9.99951C0 4.47666 4.47715 -0.000488281 10 -0.000488281H140C145.523 -0.000488281 150 4.47666 150 9.99951V10.5803C150 13.3951 148.814 16.0796 146.732 17.9747L18.8619 134.394C17.0205 136.07 14.6199 137 12.1297 137H10C4.47715 137 0 132.522 0 127V9.99951Z"
-                                        fill="#0D5EF4" />
-                                </svg></div>
-                            <div class="testi-box_content">
-                                <div class="testi-box_img"><img src="{% static 'assets/img/testimonial/testi_1_2.jpg' %}"
-                                        alt="Avater"></div>
-                                <p class="testi-box_text">“Quickly maximize visionary solutions after mission
-                                    critical action items productivate premium portals for impactful -services
-                                    stinctively negotiate enabled niche markets via growth strategies”</p>
-                            </div>
-                            <div class="testi-box_bottom">
-                                <div>
-                                    <h3 class="testi-box_name">Zara Head Milan</h3><span
-                                        class="testi-box_desig">Regular Student</span>
-                                </div>
-                                <div class="testi-box_review"><i class="fas fa-solid fa-star"></i> <i
-                                        class="fas fa-solid fa-star"></i> <i class="fas fa-solid fa-star"></i>
-                                    <i class="fas fa-solid fa-star"></i> <i class="fas fa-solid fa-star"></i>
-                                    (4.7)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="testi-box">
-                            <div class="testi-box-bg-shape"><svg width="150" height="137" viewBox="0 0 150 137"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M0 9.99951C0 4.47666 4.47715 -0.000488281 10 -0.000488281H140C145.523 -0.000488281 150 4.47666 150 9.99951V10.5803C150 13.3951 148.814 16.0796 146.732 17.9747L18.8619 134.394C17.0205 136.07 14.6199 137 12.1297 137H10C4.47715 137 0 132.522 0 127V9.99951Z"
-                                        fill="#0D5EF4" />
-                                </svg></div>
-                            <div class="testi-box_content">
-                                <div class="testi-box_img"><img src="{% static 'assets/img/testimonial/testi_1_1.jpg' %}"
-                                        alt="Avater"></div>
-                                <p class="testi-box_text">“Quickly maximize visionary solutions after mission
-                                    critical action items productivate premium portals for impactful -services
-                                    stinctively negotiate enabled niche markets via growth strategies”</p>
-                            </div>
-                            <div class="testi-box_bottom">
-                                <div>
-                                    <h3 class="testi-box_name">David H. Smith</h3><span class="testi-box_desig">IT
-                                        Student</span>
-                                </div>
-                                <div class="testi-box_review"><i class="fas fa-solid fa-star"></i> <i
-                                        class="fas fa-solid fa-star"></i> <i class="fas fa-solid fa-star"></i>
-                                    <i class="fas fa-solid fa-star"></i> <i class="fas fa-solid fa-star"></i>
-                                    (4.7)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="testi-box">
-                            <div class="testi-box-bg-shape"><svg width="150" height="137" viewBox="0 0 150 137"
-                                    fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M0 9.99951C0 4.47666 4.47715 -0.000488281 10 -0.000488281H140C145.523 -0.000488281 150 4.47666 150 9.99951V10.5803C150 13.3951 148.814 16.0796 146.732 17.9747L18.8619 134.394C17.0205 136.07 14.6199 137 12.1297 137H10C4.47715 137 0 132.522 0 127V9.99951Z"
-                                        fill="#0D5EF4" />
-                                </svg></div>
-                            <div class="testi-box_content">
-                                <div class="testi-box_img"><img src="{% static 'assets/img/testimonial/testi_1_2.jpg' %}"
-                                        alt="Avater"></div>
-                                <p class="testi-box_text">“Quickly maximize visionary solutions after mission
-                                    critical action items productivate premium portals for impactful -services
-                                    stinctively negotiate enabled niche markets via growth strategies”</p>
-                            </div>
-                            <div class="testi-box_bottom">
-                                <div>
-                                    <h3 class="testi-box_name">Zara Head Milan</h3><span
-                                        class="testi-box_desig">Regular Student</span>
-                                </div>
-                                <div class="testi-box_review"><i class="fas fa-solid fa-star"></i> <i
-                                        class="fas fa-solid fa-star"></i> <i class="fas fa-solid fa-star"></i>
-                                    <i class="fas fa-solid fa-star"></i> <i class="fas fa-solid fa-star"></i>
-                                    (4.7)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

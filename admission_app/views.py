@@ -1,37 +1,49 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, TemplateView
 from .models import University, College
+from  collage_admin.models import Review
+from .forms import AdmissionApplicationForm
 from collages.models import *
+from django.http import Http404
+
 import logging
+from django.views import View
 from django.db.models import Q
 logger = logging.getLogger(__name__)
 
-class HomeView(ListView):
+class HomeView(TemplateView):
     template_name = 'index.html'
-    context_object_name = 'data'
-
-    def get_queryset(self):
-        try:
-            universities = list(University.objects.only("id", "name", "location"))
-            colleges = list(College.objects.only("id", "name", "location"))
-            blog  = list(Blog.objects.only("id", "title", "image", "slug"))
-            return {"universities": universities, "colleges": colleges, "blogs": blog}
-        except University.DoesNotExist:
-            logger.error("University data not found.")
-            return {"universities": [], "colleges": []}
-        except College.DoesNotExist:
-            logger.error("College data not found.")
-            return {"universities": [], "colleges": []}
-        except Blog.DoesNotExist:
-            logger.error("Blog data not found.")
-            return {"universities": [], "colleges": []}
-        except Exception as e:
-            logger.error(f"Error fetching data: {e}")
-            return {"universities": [], "colleges": []}
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context.update(self.get_queryset())
+
+        # Default empty lists
+        context['universities'] = []
+        context['colleges'] = []
+        context['blogs'] = []
+        context['reviews'] = []
+
+        # Fetch data with error handling and logging
+        try:
+            context['universities'] = University.objects.all().only("id", "name", "location")
+        except Exception as e:
+            logger.error(f"Error fetching universities: {e}")
+
+        try:
+            context['colleges'] = College.objects.all().only("id", "name", "location")
+        except Exception as e:
+            logger.error(f"Error fetching colleges: {e}")
+
+        try:
+            context['blogs'] = Blog.objects.all().only("id", "title", "image", "slug")
+        except Exception as e:
+            logger.error(f"Error fetching blogs: {e}")
+
+        try:
+            context['reviews'] = Review.objects.all().only("id", "author", "image", "rating", "comment", "created_at", "updated_at")
+        except Exception as e:
+            logger.error(f"Error fetching reviews: {e}")
+
         return context
     
 
@@ -73,25 +85,57 @@ class ContactView(TemplateView):
         return context
 
 
-class CollegeDetailsView(TemplateView):
+class CollegeDetailsView(View):
     template_name = 'collage-details.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        slug = self.kwargs.get('slug')
-        college = get_object_or_404(College, slug=slug)
-        course =  Courses.objects.filter(college=college)
-        for c in course:
-            print(f" Course Name: {c.name}, Image : {c.image} ")
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data()
+        context['form'] = AdmissionApplicationForm()
+        return render(request, self.template_name, context)
 
-        if not course.exists():
+    def post(self, request, *args, **kwargs):
+        print("Form submission received.")
+        form = AdmissionApplicationForm(request.POST, request.FILES)
+        context = self.get_context_data()
+
+        if form.is_valid():
+            form.save()
+            logger.info(f"Application submitted: {form.cleaned_data}")
+            context['success'] = "Application submitted successfully."
+            context['form'] = AdmissionApplicationForm()
+            print("Form submission successful.")
+        else:
+            logger.warning("Form submission failed due to validation errors.")
+            logger.warning(f"Form errors: {form.errors}")
+            context['error'] = "There were errors in your form. Please correct them and try again."
+            context['form'] = form
+            print("Form submission failed.")
+
+        return render(request, self.template_name, context)
+
+
+    def get_context_data(self):
+        slug = self.kwargs.get('slug')
+
+        if not slug:
+            logger.error("College slug not provided in URL.")
+            raise Http404("College slug not provided.")
+
+        college = get_object_or_404(College, slug=slug)
+        courses = Courses.objects.filter(college=college)
+        colleges = College.objects.all()
+
+        if not courses.exists():
             logger.warning(f"No courses found for college: {college.name}")
         else:
             logger.info(f"Courses found for college: {college.name}")
-        context['courses'] = course
-        context['page_title'] = "College Details"
-        context['college'] = college
-        return context
+
+        return {
+            'college': college,
+            'courses': courses,
+            'colleges': colleges,
+            'page_title': "College Details",
+        }
     
 
 class CourseDetailsView(TemplateView):
@@ -151,6 +195,3 @@ class AboutView(TemplateView):
         return context
     
 
-
-
-    

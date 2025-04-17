@@ -116,9 +116,9 @@
                                                             <td>{{ blog.created_at }}</td>
                                                             <td>
                                                                 <ul class="action">
-                                                                    <li class="edit"> <a href="#"><i
+                                                                    <li class="edit"> <a href="{% url 'blog_update' blog.slug %}"><i
                                                                                 class="fas fa-pencil-alt"></i></a></li>
-                                                                    <li class="delete"><a href="#"><i
+                                                                    <li class="delete"><a href="{% url 'blog_delete' blog.slug %}"><i
                                                                                 class="fas fa-trash"></i></a></li>
                                                                 </ul>
                                                             </td>

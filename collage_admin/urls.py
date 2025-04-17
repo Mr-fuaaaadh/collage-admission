@@ -11,5 +11,14 @@ urlpatterns = [
 
     path('add/blog/', BlogCreateView.as_view(), name='blog_create'),
     path('blogs/', BlogListView.as_view(), name='blog_list'),
+    path('blog/update/<str:slug>/', BlogUpdateView.as_view(), name='blog_update'),
+    path('blog/delete/<str:slug>/', BlogDeleteView.as_view(), name='blog_delete'),
+
+
+
+    path('add/review/', ReviewCreateView.as_view(), name='review_create'),
+    path('reviews/', ReviewListView.as_view(), name='review_list'),
+    path('review/update/<int:pk>/', ReviewUpdateView.as_view(), name='review_update'),
+    path('review/delete/<int:pk>/', ReviewDeleteView.as_view(), name='review_delete'),
 
 ]

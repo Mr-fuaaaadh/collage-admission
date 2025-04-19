@@ -43,3 +43,11 @@ class AdmissionApplicationForm(forms.ModelForm):
                 'rows': 3,
             }),
         }
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    subject = forms.CharField(max_length=150)
+    number = forms.CharField(max_length=20)
+    message = forms.CharField(widget=forms.Textarea)

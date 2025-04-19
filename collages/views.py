@@ -15,6 +15,8 @@ from .forms import CourseForm, CollageForm
 import logging
 from django.utils.safestring import mark_safe
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -24,6 +26,7 @@ def display_message(request, msg, msg_type="info"):
     messages.add_message(request, getattr(messages, msg_type.upper()), msg)
 
 # Base College View (for common functionality)
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')
 class BaseCollegeView(View):
     model = College
     template_name = ''
@@ -37,6 +40,7 @@ class BaseCollegeView(View):
             return None
 
 # College List View
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')
 class CollegeListView(BaseCollegeView):
     template_name = 'admin/college_list.html'
 
@@ -47,6 +51,7 @@ class CollegeListView(BaseCollegeView):
         return render(request, self.template_name, context)
 
 # College Create View
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')
 class CollegeCreateView(BaseCollegeView):
     template_name = 'admin/college_form.html'
     success_url = 'college_add'  # You can override this as needed
@@ -88,6 +93,8 @@ class CollegeCreateView(BaseCollegeView):
             }
             return render(request, self.template_name, context)
 
+
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')
 class CollegeUpdateView(BaseCollegeView):
     template_name = 'admin/college_form.html'
 
@@ -132,6 +139,7 @@ class CollegeUpdateView(BaseCollegeView):
             })
 
 # College Detail View
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')
 class CollegeDetailView(BaseCollegeView):
     template_name = 'admin/college_detail.html'
 
@@ -143,6 +151,7 @@ class CollegeDetailView(BaseCollegeView):
         return render(request, self.template_name, context)
 
 # College Delete View
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')
 def CollegeDeleteView(request, pk,):
     college = get_object_or_404(College, pk=pk)
     try:
@@ -164,7 +173,7 @@ def CollegeDeleteView(request, pk,):
 # The code also includes error handling and user feedback through messages.
 
 
-
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')
 class CourseListView(View):
     template_name = 'admin/course_list.html'
 
@@ -200,7 +209,7 @@ class CourseListView(View):
             return self.get(request, pk)
 
 
-
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')
 def CourseDeleteView(request, pk):
     try:
         course = get_object_or_404(Courses, pk=pk)
@@ -211,7 +220,7 @@ def CourseDeleteView(request, pk):
         messages.error(request, f"Error deleting course: {str(e)}")
     return redirect('course_list', pk=collage_id)
 
-
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')
 def CourseUpdateView(request, pk):
     course = get_object_or_404(Courses, pk=pk)
 
@@ -253,7 +262,7 @@ class PageTitleMixin:
         context['page_title'] = self.page_title
         return context
 
-
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')
 class AllAdmissionEnquiryView(PageTitleMixin, ListView):
     """
     View to list all admission enquiries.
@@ -268,7 +277,7 @@ class AllAdmissionEnquiryView(PageTitleMixin, ListView):
     def get_queryset(self):
         return Admission.objects.order_by('-created_at')
 
-
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')
 class AdmissionEnquiryDetailView(PageTitleMixin, DetailView):
     """
     View to display the detail of a single admission enquiry.
@@ -278,7 +287,7 @@ class AdmissionEnquiryDetailView(PageTitleMixin, DetailView):
     context_object_name = 'enquiry'
     page_title = "Admission Enquiry Detail"
 
-
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')
 class MarkAsViewedView(View):
     """
     View to update the is_viewed field of an enquiry.

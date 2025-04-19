@@ -7,6 +7,8 @@ urlpatterns = [
     path('contact/', ContactView.as_view(), name='contact'),
     path('blog/', BlogListView.as_view(), name='blog'),
     path('about/', AboutView.as_view(), name='about'),
+
+    path('contact/send/', SendMessageView.as_view(), name='send_message'),
     
 
     path('blog/<slug:slug>/', BlogDetailsView.as_view(), name='blog_detail'),

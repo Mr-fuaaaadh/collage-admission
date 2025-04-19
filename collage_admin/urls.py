@@ -3,7 +3,12 @@ from .views import *
 
 
 urlpatterns = [
-    path('', AdminDashboard.as_view(), name='dashboard'),
+    path('',AdminDashboard.as_view(),name='dashboard'),
+
+    path('login/',AdminLoginView.as_view(), name="admin-login"),
+    path('logout/', AdminLogoutView.as_view(), name='admin-logout'),
+
+
     path('add/university/', AdminAddUniversityView.as_view(), name='university'),
     path('universitys/', AdminAllUniversityViews.as_view(), name='universitys'),
     path('university/update/<str:slug>/', UniversityUpdateView, name='university_update'),

@@ -15,8 +15,46 @@ from django.views.generic.edit import CreateView
 from django.views import View
 from django.views.decorators.http import require_http_methods
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 
+class AdminLoginView(View):
+    template_name = 'admin/login.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        username = request.POST.get('username', '').strip()
+        password = request.POST.get('password', '').strip()
+
+        print(f"username :  {username}, password   : {password}")
+
+        if not username or not password:
+            messages.error(request, 'Username and password are required.')
+            return render(request, self.template_name)
+
+        try:
+            user = authenticate(request, username=username, password=password)
+
+            if not user :
+                messages.error(request, 'Invalid credentials or access denied.')
+                return render(request, self.template_name)
+
+            login(request, user)
+            return redirect('dashboard')
+
+        except Exception as e:
+            logger.exception("Login error")
+            messages.error(request, 'An unexpected error occurred. Please try again later.')
+            return render(request, self.template_name)
+
+
+
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')  # Apply to dispatch method
 class AdminDashboard(TemplateView):
     template_name = 'admin/index.html'
 
@@ -25,10 +63,15 @@ class AdminDashboard(TemplateView):
         context['extra_data'] = 'Some data to show in the template'
         return context
     
+class AdminLogoutView(View):
+    def get(self, request):
+        logout(request)
+        messages.success(request, "You have been logged out.")
+        return redirect('admin-login')
 
     
-    
-class AdminAddUniversityView(TemplateView):
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')   
+class AdminAddUniversityView(TemplateView ):
     template_name = 'admin/add-university.html'
 
     def get_context_data(self, **kwargs):
@@ -74,19 +117,19 @@ class AdminAddUniversityView(TemplateView):
             return self.render_to_response(self.get_context_data())
         
 
-class AdminAllUniversityViews(TemplateView):
+
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')   
+class AdminAllUniversityViews( TemplateView):
     template_name = 'admin/university_list.html'
 
     def get(self, request, *args, **kwargs):
         try:
-            # Check cache first
+            # Check cache
             universities = cache.get('university_list')
             if not universities:
-                # Optimize query: select only required fields
                 universities = University.objects.only('name', 'rank').order_by('-rank')
-                # Cache the queryset for 10 minutes (600 seconds)
                 cache.set('university_list', universities, 600)
-            
+
             # Pagination
             paginator = Paginator(universities, 10)
             page_number = request.GET.get('page')
@@ -100,17 +143,20 @@ class AdminAllUniversityViews(TemplateView):
     
 
 
-
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')   
 def UniversityDeleteView(request, slug):
     try:
         university = get_object_or_404(University, slug=slug)
         university.delete()
         messages.success(request, "University deleted successfully!")
-        return redirect("universitys")
+        return redirect("universitys")  # Make sure this is the correct URL name
     except Exception as e:
         messages.error(request, f"An unexpected error occurred: {str(e)}")
         return redirect("universitys")
-    
+
+
+
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')      
 def UniversityUpdateView(request, slug):
     try:
         university = get_object_or_404(University, slug=slug)
@@ -139,6 +185,8 @@ def UniversityUpdateView(request, slug):
         return redirect("universitys")
     
 
+
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')   
 class BlogCreateView(SuccessMessageMixin, CreateView):
     model = Blog
     form_class = BlogForm
@@ -156,7 +204,7 @@ class BlogCreateView(SuccessMessageMixin, CreateView):
         context['page_title'] = "Create Blog"
         return context
 
-
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')   
 class BlogListView(ListView):
     model = Blog
     template_name = 'admin/blog_list.html'
@@ -172,7 +220,7 @@ class BlogListView(ListView):
         return context
 
 
-
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')   
 class BlogUpdateView(SuccessMessageMixin, UpdateView):
     model = Blog
     form_class = BlogForm
@@ -196,6 +244,7 @@ class BlogUpdateView(SuccessMessageMixin, UpdateView):
         return context
 
 
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')   
 class BlogDeleteView(View):
     def get(self, request, slug):
         try:
@@ -211,7 +260,7 @@ class BlogDeleteView(View):
 
 
 
-
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')   
 class ReviewCreateView(SuccessMessageMixin, CreateView):
     model = Review
     form_class = ReviewForm
@@ -231,6 +280,8 @@ class ReviewCreateView(SuccessMessageMixin, CreateView):
         return context
     
 
+
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')   
 class ReviewListView(ListView):
     model = Review
     template_name = 'admin/review_list.html'
@@ -246,6 +297,8 @@ class ReviewListView(ListView):
         return context
 
 
+
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')   
 class ReviewUpdateView(SuccessMessageMixin, UpdateView):
     model = Review
     form_class = ReviewForm
@@ -269,7 +322,7 @@ class ReviewUpdateView(SuccessMessageMixin, UpdateView):
         return context
 
 
-
+@method_decorator(login_required(login_url='admin-login'), name='dispatch')   
 class ReviewDeleteView(View):
     def get(self, request, pk):
         try:

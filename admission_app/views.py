@@ -2,9 +2,15 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, TemplateView
 from .models import University, College
 from  collage_admin.models import Review
-from .forms import AdmissionApplicationForm
+from .forms import AdmissionApplicationForm, ContactForm
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from django.forms.models import model_to_dict
+from asgiref.sync import sync_to_async
 from collages.models import *
 from django.http import Http404
+from django.core.mail import send_mail
+from django.http import JsonResponse
 
 import logging
 from django.views import View
@@ -82,7 +88,40 @@ class ContactView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_title'] = "Contact Us"
+        context['form'] = ContactForm()
         return context
+
+
+
+class SendMessageView(View):
+    def post(self, request):
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            full_message = f"""
+            Name: {data['name']}
+            Email: {data['email']}
+            Phone: {data['number']}
+            Subject: {data['subject']}
+            Message: {data['message']}
+            """
+
+            # Sending the email directly
+            send_mail(
+                subject=f"Contact: {data['subject']}",
+                message=full_message,
+                from_email=data['email'],
+                recipient_list=['muhammadfuhad3@gmail.com'],  # replace with the recipient email(s)
+            )
+
+            print('Message is being sent!')
+
+            return JsonResponse({'message': 'Message is being sent!'}, status=200)
+
+        return JsonResponse({'errors': form.errors}, status=400)
+
+
+        
 
 
 class CollegeDetailsView(View):
